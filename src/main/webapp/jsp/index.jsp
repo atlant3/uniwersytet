@@ -2,46 +2,78 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
 
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="style/login.css">
-<title>Welcome</title>
+<title>Log in with your account</title>
+<link type="text/css" href="login.css" rel="stylesheet">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+
 </head>
+
 <body>
 	<div class="login-page">
-		<div class="form">
-			<form class="register-form">
-				<input type="text" placeholder="name" /> <input type="password"
-					placeholder="password" /> <input type="text"
-					placeholder="email address" />
-				<button>create</button>
+		<div class="form conteiner">
+			<form class="register-form" action="/registration" method="post">
+				<input class="firstName" type="text" placeholder="first name" /> <input
+					class="lastName" type="text" placeholder="last name" /> <input
+					class="email" type="text" placeholder="email address" /> <input
+					class="password" type="password" placeholder="password" /> <input
+					class="cpassword" type="password" placeholder="confirm password" />
+
+				<button class="register">create</button>
+
 				<p class="message">
 					Already registered? <a href="#">Sign In</a>
 				</p>
 			</form>
-			<form class="login-form">
-				<input type="text" placeholder="username" /> <input type="password"
-					placeholder="password" />
-				<button>login</button>
+			<form accept-charset=utf-8 class="login-form" method="POST" action="${contextPath}/index">
+				<h2 class="form-heading">
+					
+				</h2>
+
+				<div class="form-group ${error != null ? 'has-error' : ''}">
+					<span>${message}</span> <input name="userName" type="text"
+						
+						class="fadeIn second" autofocus="true" /> <input name="password"
+						type="password"
+						
+						class="fadeIn third " /> <span>${error}</span> <input
+						type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+					<input class="fadeIn fourth" type="submit"
+						v />
+				</div>
+
 				<p class="message">
 					Not registered? <a href="#">Create an account</a>
 				</p>
+
 			</form>
+
 		</div>
+		<div class="alert alert-success  alert-dismissible fade show"
+			role="alert">
+			<b>Success!</b> You are registered.
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
 	</div>
 
 
@@ -59,6 +91,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-	<script src="js/login.js"></script>
+	<script src="login.js"></script>
+
 </body>
 </html>

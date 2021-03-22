@@ -37,4 +37,8 @@ public class UserService {
 		user.setRole(UserRole.ROLE_USER);
 		userRepository.save(user);
 	}
+	public User findByUserName(String username) {
+		logger.info("Get user {} by email: " + username);
+		return userRepository.findByUserName(username).get();
+	}
 }
