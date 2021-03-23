@@ -27,51 +27,27 @@
 <body>
 	<div class="login-page">
 		<div class="form conteiner">
-			<form class="register-form" action="/registration" method="post">
-				<input class="firstName" type="text" placeholder="first name" /> <input
-					class="lastName" type="text" placeholder="last name" /> <input
-					class="email" type="text" placeholder="email address" /> <input
-					class="password" type="password" placeholder="password" /> <input
-					class="cpassword" type="password" placeholder="confirm password" />
-
-				<button class="register">create</button>
-
-				<p class="message">
-					Already registered? <a href="#">Sign In</a>
-				</p>
-			</form>
-			<form accept-charset=utf-8 class="login-form" method="POST" action="${contextPath}/index">
-				<h2 class="form-heading">
-					
-				</h2>
+			<h1>LOGIN FORM</h1>
+			<br>
+			<form accept-charset=utf-8 class="login-form" method="POST"
+				action="${contextPath}/index">
+				<h2 class="form-heading"></h2>
 
 				<div class="form-group ${error != null ? 'has-error' : ''}">
-					<span>${message}</span> <input name="userName" type="text"
-						
-						class="fadeIn second" autofocus="true" /> <input name="password"
-						type="password"
-						
-						class="fadeIn third " /> <span>${error}</span> <input
+					<span>${message}</span> <input name="userName" placeholder="Email" type="text"
+						class="fadeIn second" autofocus="true" /> <input placeholder="Password" name="password"
+						type="password" class="fadeIn third " /> <span>${error}</span> <input
 						type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-					<input class="fadeIn fourth" type="submit"
-						v />
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 				</div>
 
 				<p class="message">
-					Not registered? <a href="#">Create an account</a>
+					Not registered? <a href="/registration">Create an account</a>
 				</p>
 
 			</form>
 
-		</div>
-		<div class="alert alert-success  alert-dismissible fade show"
-			role="alert">
-			<b>Success!</b> You are registered.
-			<button type="button" class="close" data-dismiss="alert"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
 		</div>
 
 	</div>
@@ -90,8 +66,8 @@
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-	<script src="login.js"></script>
+	<!-- 
+	<script src="login.js"></script> -->
 
 </body>
 </html>

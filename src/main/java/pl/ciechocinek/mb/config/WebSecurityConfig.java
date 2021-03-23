@@ -29,14 +29,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configAuthentification(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-		.antMatchers("/").permitAll().antMatchers("/home").access("hasRole('ROLE_USER') or hasRole('1')").and()
-		.formLogin().loginPage("/index")
-		.defaultSuccessUrl("/home").usernameParameter("userName").passwordParameter("password").and()
-		.logout().logoutSuccessUrl("/index?logout").and()
-		.exceptionHandling().accessDeniedPage("/403").and()
-		.csrf();
+		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/home")
+				.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')").antMatchers("/admin")
+				.access("hasRole('ROLE_ADMIN')").and().formLogin().loginPage("/index").defaultSuccessUrl("/home")
+				.usernameParameter("userName").passwordParameter("password").and().logout()
+				.logoutSuccessUrl("/index?logout").and().exceptionHandling().accessDeniedPage("/403").and().csrf();
 	}
 }

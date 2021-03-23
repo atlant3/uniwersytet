@@ -36,7 +36,7 @@ CREATE TABLE `faculty` (
 
 LOCK TABLES `faculty` WRITE;
 /*!40000 ALTER TABLE `faculty` DISABLE KEYS */;
-INSERT INTO `faculty` VALUES (1,200,'Test');
+INSERT INTO `faculty` VALUES (1,20,'IT'),(2,15,'Social');
 /*!40000 ALTER TABLE `faculty` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +82,7 @@ CREATE TABLE `hibernate_sequence` (
 
 LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (6);
+INSERT INTO `hibernate_sequence` VALUES (5);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,12 +169,12 @@ CREATE TABLE `user` (
   `id` bigint NOT NULL,
   `age` int NOT NULL,
   `amount` int NOT NULL,
-  `first_name` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `role` int DEFAULT NULL,
   `status` int NOT NULL,
-  `user_name` varchar(255) DEFAULT NULL,
+  `user_name` varchar(255) NOT NULL,
   `faculty_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK25mtxsyu84lnn33ygespegy2l` (`faculty_id`)
@@ -187,7 +187,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (5,20,200,'Maks','Maks','$2a$10$O90aPxvxMToP8b2JI/GWQ.bDKw.whmM7S5Ua/MLEqqCULCotgsdW6',1,1,'maks',1);
+INSERT INTO `user` VALUES (3,20,0,'student','student','$2a$10$fc6RRB5gdVgy262WsWI3O.VHCciEaDZ3RgkGTVST59IqaYXAwcD6K',1,0,'student',1),(4,25,0,'admin','admin','$2a$10$uW2HSt9otWDi3o.crxq3u.apeskK81Q1wHkmdXbGCL92e4TXtTLFe',0,0,'admin',2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -200,4 +200,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-22 22:41:04
+-- Dump completed on 2021-03-23 21:58:45

@@ -32,7 +32,7 @@ public class UserService {
 //	}
 	//add a new user to DataBase
 	public void save(User user) {
-		logger.info("Register new user {} : " + user);
+//		logger.info("Register new user {} : " + user);
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setRole(UserRole.ROLE_USER);
 		userRepository.save(user);

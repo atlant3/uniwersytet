@@ -20,10 +20,15 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@Column(nullable = false)
 	private String lastName;
+	@Column(nullable = false)
 	private String firstName;
+	@Column(nullable = false)
 	private String userName;
+	@Column(nullable = false)
 	private String password;
+	@Column(nullable = false)
 	private int age;
 	private int status;
 	private int amount;
