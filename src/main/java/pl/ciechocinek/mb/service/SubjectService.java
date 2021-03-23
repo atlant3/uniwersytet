@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pl.ciechocinek.mb.dao.SubjectRepository;
+import pl.ciechocinek.mb.domain.Subject;
 
 @Service
 public class SubjectService {
@@ -13,4 +14,9 @@ public class SubjectService {
 
 	@Autowired
 	private SubjectRepository subjectRepository;
+	
+	public void save(Subject subject) {
+//		logger.info("Add a new subject to DataBase" + subject);
+		subjectRepository.save(subject);
+	}
 }

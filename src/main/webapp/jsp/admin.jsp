@@ -8,5 +8,6 @@
 </head>
 <body>
 ADMIN PANEL
+<a href="/addFaculty">Add a new Faculty</a>
 </body>
 </html>

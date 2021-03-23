@@ -1,7 +1,7 @@
 package pl.ciechocinek.mb.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import pl.ciechocinek.mb.dao.FacultyRepository;
 import pl.ciechocinek.mb.domain.Faculty;
-import pl.ciechocinek.mb.domain.User;
 
 @Service
 public class FacultyService {
@@ -18,6 +17,13 @@ public class FacultyService {
 
 	@Autowired
 	private FacultyRepository facultyRepository;
+	
+	//save Faculty to DataBase
+	public void save(Faculty faculty) {
+//		logger.info("Add a new faculty to DataBase" + faculty.toString());
+		facultyRepository.save(faculty);
+	}
+	
 	
 	//find all faculty
 	public List<Faculty> listOfFaculty() {
@@ -28,8 +34,9 @@ public class FacultyService {
 	//find by id
 	public Faculty findById(Long id) {
 		logger.info("Find faculty by id" + id);
-		return facultyRepository.getOne(id);
-		
+		return facultyRepository.getOne(id);	
 	}
-
+	public Set<Faculty> setOfFaculty(Faculty faculty) {
+		return setOfFaculty(faculty);
+	}
 }
