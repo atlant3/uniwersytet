@@ -35,8 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/home")
 				.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')").antMatchers("/admin")
 				.access("hasRole('ROLE_ADMIN')").antMatchers("/addFaculty").access("hasRole('ROLE_ADMIN')")
-				.antMatchers("/addSubject").access("hasRole('ROLE_ADMIN')").and().formLogin().loginPage("/index")
-				.defaultSuccessUrl("/home").usernameParameter("userName").passwordParameter("password").and().logout()
+				.antMatchers("/addSubject").access("hasRole('ROLE_ADMIN')").antMatchers("/listStudents")
+				.access("hasRole('ROLE_ADMIN')").and().formLogin().loginPage("/index").defaultSuccessUrl("/home")
+				.usernameParameter("userName").passwordParameter("password").and().logout()
 				.logoutSuccessUrl("/index?logout").and().exceptionHandling().accessDeniedPage("/403").and().csrf();
 	}
 }

@@ -1,5 +1,7 @@
 package pl.ciechocinek.mb.service;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
@@ -27,18 +29,30 @@ public class UserService {
 //	public void addFirstUser() {
 //		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 //		String pass = passwordEncoder.encode("admin");
-//		User user = new User("Maks", "Maks", "maks", pass, 20, 1, 200, UserRole.ROLE_USER);
+//		User user = new User("Maks", "Maks", "maks", pass, 20, 1, 200, UserRole.ROLE_ADMIN);
 //		userRepository.save(user);
 //	}
-	//add a new user to DataBase
+
+	// add a new user to DataBase
 	public void save(User user) {
 //		logger.info("Register new user {} : " + user);
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setRole(UserRole.ROLE_USER);
 		userRepository.save(user);
 	}
+
 	public User findByUserName(String username) {
 		logger.info("Get user {} by email: " + username);
 		return userRepository.findByUserName(username).get();
+	}
+
+	// show all students
+	public List<User> findAllStudents() {
+		return userRepository.findAllOnlyStudents();
+	}
+
+	// Delete user from DataBase by ID
+	public void deleteUser(Long id) {
+		userRepository.deleteById(id);
 	}
 }

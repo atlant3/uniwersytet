@@ -36,32 +36,8 @@ CREATE TABLE `faculty` (
 
 LOCK TABLES `faculty` WRITE;
 /*!40000 ALTER TABLE `faculty` DISABLE KEYS */;
-INSERT INTO `faculty` VALUES (1,20,'IT'),(2,15,'Social');
+INSERT INTO `faculty` VALUES (0,10,'IT'),(4,20,'SOCIAL');
 /*!40000 ALTER TABLE `faculty` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `faculty_subject`
---
-
-DROP TABLE IF EXISTS `faculty_subject`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `faculty_subject` (
-  `faculty_id` bigint NOT NULL,
-  `subject_id` bigint NOT NULL,
-  PRIMARY KEY (`faculty_id`,`subject_id`),
-  KEY `FKbx9t3vrru6fxto3lsmhq24623` (`subject_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `faculty_subject`
---
-
-LOCK TABLES `faculty_subject` WRITE;
-/*!40000 ALTER TABLE `faculty_subject` DISABLE KEYS */;
-/*!40000 ALTER TABLE `faculty_subject` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -82,7 +58,7 @@ CREATE TABLE `hibernate_sequence` (
 
 LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (5);
+INSERT INTO `hibernate_sequence` VALUES (7);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +131,33 @@ CREATE TABLE `subject` (
 
 LOCK TABLES `subject` WRITE;
 /*!40000 ALTER TABLE `subject` DISABLE KEYS */;
+INSERT INTO `subject` VALUES (3,'History'),(6,'Physical');
 /*!40000 ALTER TABLE `subject` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `subject_faculty`
+--
+
+DROP TABLE IF EXISTS `subject_faculty`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `subject_faculty` (
+  `subject_id` bigint NOT NULL,
+  `faculty_id` bigint NOT NULL,
+  PRIMARY KEY (`subject_id`,`faculty_id`),
+  KEY `FK5m39ixpfegtmp5fupxxowshed` (`faculty_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subject_faculty`
+--
+
+LOCK TABLES `subject_faculty` WRITE;
+/*!40000 ALTER TABLE `subject_faculty` DISABLE KEYS */;
+INSERT INTO `subject_faculty` VALUES (3,0),(6,0);
+/*!40000 ALTER TABLE `subject_faculty` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -187,7 +189,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (3,20,0,'student','student','$2a$10$fc6RRB5gdVgy262WsWI3O.VHCciEaDZ3RgkGTVST59IqaYXAwcD6K',1,0,'student',1),(4,25,0,'admin','admin','$2a$10$uW2HSt9otWDi3o.crxq3u.apeskK81Q1wHkmdXbGCL92e4TXtTLFe',0,0,'admin',2);
+INSERT INTO `user` VALUES (1,25,0,'admin','admin','$2a$10$apcTKj8n.OK/d4DTaWys7ugdC0eVjAXY1IwaISjLhghEVQ54qOZsG',0,0,'admin',0),(5,20,0,'student','student','$2a$10$rGxlVmympFB3whd9.Gorhue6caanEAH3QAx5OKwTiX6AWbfQ6YFOu',1,0,'student',4);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -200,4 +202,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-23 21:58:45
+-- Dump completed on 2021-03-24 21:27:07

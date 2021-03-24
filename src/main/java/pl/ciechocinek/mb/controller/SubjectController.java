@@ -1,5 +1,7 @@
 package pl.ciechocinek.mb.controller;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +40,12 @@ public class SubjectController {
 		if (bindingResult.hasErrors()) {
 			return "addSubject";
 		}
-		;
-	
+//		Faculty f1 = (Faculty) model.getAttribute("faculty");
+//		System.out.println(formAddSubject.toString());
+//		int i = formAddSubject.getFaculty().
+//		
+////		formAddSubject.setFaculty(null);
+////		System.out.println(formAddSubject.toString() + f1);
 		subjectService.save(formAddSubject);
 
 		return "redirect:/admin";

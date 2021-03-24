@@ -1,5 +1,6 @@
 package pl.ciechocinek.mb.domain;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Faculty {
+public class Faculty implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "faculty_id")
@@ -27,12 +32,12 @@ public class Faculty {
 			CascadeType.MERGE }, mappedBy = "faculty")
 	@Column(nullable = false)
 	private Set<User> users;
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "faculty_subject", joinColumns = @JoinColumn(name = "faculty_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
+
+	@ManyToMany(mappedBy = "faculty", fetch = FetchType.LAZY)
 	private Set<Subject> subjects = new HashSet<Subject>();
 
 	public Faculty(Long id, String name, int limitAmount, Set<User> users, Set<Subject> subjects) {
-		super();
+
 		this.id = id;
 		this.name = name;
 		this.limitAmount = limitAmount;
@@ -40,8 +45,25 @@ public class Faculty {
 		this.subjects = subjects;
 	}
 
+	public Faculty(String name, int limitAmount) {
+		this.name = name;
+		this.limitAmount = limitAmount;
+	}
+
+	public Faculty(Long id, String name, int limitAmount) {
+		this.id = id;
+		this.name = name;
+		this.limitAmount = limitAmount;
+	}
+
+	public Faculty(Long id, String name, int limitAmount, Set<Subject> subjects) {
+		this.id = id;
+		this.name = name;
+		this.limitAmount = limitAmount;
+		this.subjects = subjects;
+	}
+
 	public Faculty(String name, int limitAmount, Set<User> users, Set<Subject> subjects) {
-		super();
 		this.name = name;
 		this.limitAmount = limitAmount;
 		this.users = users;
@@ -49,7 +71,6 @@ public class Faculty {
 	}
 
 	public Faculty() {
-		super();
 	}
 
 	public Long getId() {

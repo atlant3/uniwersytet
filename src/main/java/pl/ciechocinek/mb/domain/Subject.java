@@ -1,23 +1,33 @@
 package pl.ciechocinek.mb.domain;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Subject {
+public class Subject implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "subject_id")
 	private Long id;
 	private String name;
-	@ManyToMany(mappedBy = "subjects")
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "subject_faculty", joinColumns = @JoinColumn(name = "subject_id"), inverseJoinColumns = @JoinColumn(name = "faculty_id"))
 	private Set<Faculty> faculty = new HashSet<Faculty>();
 	@ManyToMany(mappedBy = "subjects")
 	private Set<Result> results = new HashSet<Result>();
@@ -29,6 +39,24 @@ public class Subject {
 		this.name = name;
 		this.faculty = faculty;
 		this.results = results;
+	}
+
+	public Subject(String name) {
+		super();
+		this.name = name;
+	}
+
+	public Subject(String name, Set<Faculty> faculty) {
+		super();
+		this.name = name;
+		this.faculty = faculty;
+	}
+
+	public Subject(Long id, String name, Set<Faculty> faculty) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.faculty = faculty;
 	}
 
 	public Subject(Long id, String name, Set<Faculty> faculty, Set<Result> results) {
@@ -105,6 +133,5 @@ public class Subject {
 	public String toString() {
 		return "Subject [id=" + id + ", name=" + name + ", faculty=" + faculty + ", results=" + results + "]";
 	}
-	
 
 }

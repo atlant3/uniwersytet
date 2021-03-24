@@ -7,6 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import pl.ciechocinek.mb.domain.User;
 import pl.ciechocinek.mb.service.FacultyService;
@@ -53,4 +55,23 @@ public class UserController {
 
 		return "index";
 	}
+
+	@RequestMapping(value = "/listStudents", method = RequestMethod.GET)
+	public ModelAndView getAllItems() {
+		return showStudents();
+	}
+	
+	@RequestMapping(value = "/deleteStudent", method = RequestMethod.GET)
+	public String delete(@RequestParam Long id) {
+		userService.deleteUser(id);
+		return "listStudents";
+	}
+	
+	public ModelAndView showStudents() {
+		ModelAndView map = new ModelAndView("listStudents");
+		map.addObject("students", userService.findAllStudents());
+		return map;
+	}
+	
+	
 }
