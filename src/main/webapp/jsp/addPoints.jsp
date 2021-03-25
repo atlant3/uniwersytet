@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,27 +16,30 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Home page</title>
-<link type="text/css" href="login.css" rel="stylesheet">
+<title>List of Students</title>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link type="text/css" href="login.css" rel="stylesheet">
+<style type="text/css">
+.table {
+	background: #fff;
+}
 
+h1, .back a {
+	color: #fff;
+	font-weight: bold;
+}
+</style>
 </head>
 
 <body>
-
-	<a href="/admin">ADMIN PANEL</a>
-
-	<div class="container form">
-		<h1>Your profile</h1>
-		<img src="data:image/jpg;base64, ${user.encodedImage}" alt="My image"
-			style="width: 60%"> <br>
-		<h3>Last Name: ${user.lastName}</h3>
-		<h3>First Name: ${user.firstName}</h3>
-		<h4>Faculty: ${user.faculty.name}</h4>
-		<br> <a href="addPoints?id=${user.faculty.id}">Add</a>
-
+	<div class="container-fluid">
+		<c:forEach var="subject" items="${subjects}">
+			<h1>${subject.name}</h1>
+		</c:forEach>
 	</div>
 
 
@@ -52,8 +56,6 @@
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<!-- 
-	<script src="login.js"></script> -->
 
 </body>
 </html>

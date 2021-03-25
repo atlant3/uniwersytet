@@ -26,19 +26,22 @@ public class SubjectService {
 	
 	
 	
-//	@PostConstruct
-//	public void addFirstFaculty() {
-//		Subject s1 = new Subject("Jeee");
-//		subjectRepository.save(s1);
-//		Faculty f1 = new Faculty("Jeesss", 0);
-//		facultyRepository.save(f1);
-//		s1.getFaculty().add(f1);
-//		subjectRepository.save(s1);
-//	}
+	@PostConstruct
+	public void addFirstFaculty() {
+		Subject s1 = new Subject("Jeee");
+		subjectRepository.save(s1);
+		Faculty f1 = new Faculty("Jeesss", 0);
+		facultyRepository.save(f1);
+		s1.getFaculty().add(f1);
+		subjectRepository.save(s1);
+	}
 
 	public void save(Subject subject) {
 //		logger.info("Add a new subject to DataBase" + subject);
 		subjectRepository.save(subject);
+	}
+	public List<Subject> subjectsFaculty(Long id) {
+		return subjectRepository.subjectsByFacultet(id);
 	}
 
 }

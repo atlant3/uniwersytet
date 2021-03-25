@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -32,6 +33,8 @@ public class User {
 	private int age;
 	private int status;
 	private int amount;
+	@Lob
+	private String encodedImage;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "faculty_id")
 	private Faculty faculty;
@@ -97,6 +100,14 @@ public class User {
 		this.faculty = faculty;
 		this.results = results;
 		this.role = role;
+	}
+
+	public String getEncodedImage() {
+		return encodedImage;
+	}
+
+	public void setEncodedImage(String encodedImage) {
+		this.encodedImage = encodedImage;
 	}
 
 	public Long getId() {

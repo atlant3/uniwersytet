@@ -32,7 +32,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		registry.addViewController("/addFaculty").setViewName("addFaculty");
 		registry.addViewController("/addSubject").setViewName("addSubject");
 		registry.addViewController("/listStudents").setViewName("listStudents");
+		registry.addViewController("/addPoints").setViewName("addPoints");
 //		registry.addViewController("/deleteStudent").setViewName("listStudents");
+		
 		registry.addViewController("/403").setViewName("403");
 		
 	}

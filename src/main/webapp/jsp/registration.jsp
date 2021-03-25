@@ -28,7 +28,7 @@
 	<div class="login-page">
 		<div class="form conteiner">
 			<form:form method="POST" modelAttribute="userForm"
-				class="form-signin">
+				class="form-signin" enctype="multipart/form-data">
 				<h2 class="form-signin-heading">Create your account</h2>
 
 				<spring:bind path="firstName">
@@ -80,7 +80,8 @@
 						<form:errors path="password"></form:errors>
 					</div>
 				</spring:bind>
-
+				<input type="file" name="imgFile" />
+			
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 				<p class="message">
 					Already registered? <a href="/login">Sign In</a>

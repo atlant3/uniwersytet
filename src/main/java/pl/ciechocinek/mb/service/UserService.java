@@ -1,15 +1,15 @@
 package pl.ciechocinek.mb.service;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import pl.ciechocinek.mb.dao.UserRepository;
 import pl.ciechocinek.mb.domain.User;
@@ -25,17 +25,10 @@ public class UserService {
 	@Autowired
 	private PasswordEncoder bCryptPasswordEncoder;
 
-//	@PostConstruct
-//	public void addFirstUser() {
-//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		String pass = passwordEncoder.encode("admin");
-//		User user = new User("Maks", "Maks", "maks", pass, 20, 1, 200, UserRole.ROLE_ADMIN);
-//		userRepository.save(user);
-//	}
-
 	// add a new user to DataBase
-	public void save(User user) {
+	public void save(User user, MultipartFile file) throws IOException {
 //		logger.info("Register new user {} : " + user);
+		user.setEncodedImage(Base64.getEncoder().encodeToString(file.getBytes()));
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setRole(UserRole.ROLE_USER);
 		userRepository.save(user);
@@ -44,6 +37,11 @@ public class UserService {
 	public User findByUserName(String username) {
 		logger.info("Get user {} by email: " + username);
 		return userRepository.findByUserName(username).get();
+	}
+
+	public User getByUsername(String username) {
+		logger.info("Get user {} by email: " + username);
+		return userRepository.getByUsername(username);
 	}
 
 	// show all students
@@ -55,4 +53,5 @@ public class UserService {
 	public void deleteUser(Long id) {
 		userRepository.deleteById(id);
 	}
+
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pl.ciechocinek.mb.dao.ResultRepository;
+import pl.ciechocinek.mb.domain.Result;
 
 @Service
 public class ResultService {
@@ -13,4 +14,9 @@ public class ResultService {
 
 	@Autowired
 	private ResultRepository resultRepository;
-}
+	
+	//add resault to DataBase
+	public void save(Result result) {
+		resultRepository.save(result);
+	}
+} 
