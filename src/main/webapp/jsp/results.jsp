@@ -16,7 +16,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>List of Students</title>
+<title>My results</title>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -32,49 +32,120 @@ h1, .back a {
 	color: #fff;
 	font-weight: bold;
 }
+{box-sizing: border-box;}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
 </style>
 </head>
 
 <body>
 	<div class="container-fluid">
 		<br>
-		<h1 class="text-center">List of Students</h1>
+		<h1 class="text-center">Results</h1>
 		<br> <input class="form-control" id="myInput" type="text"
 			placeholder="Search.."> <br>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Age</th>
-					<th>Faculty</th>
+					<th>Subject</th>
 					<th>Amount</th>
-					<th>Delete</th>
-					<th>Accept</th>
+					<th>Edit</th>
 				</tr>
 			</thead>
 			<tbody id="myTable">
-				<c:forEach var="student" items="${students}">
+				<c:forEach var="result" items="${results}">
 					<tr>
-						<td>${student.id}</td>
-						<td>${student.firstName}</td>
-						<td>${student.lastName}</td>
-						<td>${student.age}</td>
-						<td>${student.faculty.name}</td>
-						<td>${student.amount}</td>
+						<td>${result.id}</td>
+						<td>${result.subject.name}</td>
+						<td>${result.amount}</td>
 
-						<td><a href="deleteStudent?id=${student.id}">X</a></td>
-						<td><a href="acceptStudent?id=${student.id}">V</a></td>
+						<td><a id="myForm" href="setResult?id=${result.id}">Edit</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<br>
 		<p class="text-center back">
-			<a class="" href="/admin">BACK</a>
+			<a href="/home">BACK</a>  
 		<p>
 	</div>
+	<script>
+	
+	function openForm() {
+		  document.getElementById("myForm").style.display = "block";
+		}
+
+		function closeForm() {
+		  document.getElementById("myForm").style.display = "none";
+		}
+	</script>
 	<script>
 		$(document)
 				.ready(

@@ -1,5 +1,7 @@
 package pl.ciechocinek.mb.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +21,13 @@ public class ResultService {
 	public void save(Result result) {
 		resultRepository.save(result);
 	}
-} 
+	public List<Result> showResultByUserId(Long id) {
+		return resultRepository.showResultByUserId(id);
+	}
+	public Result getResultById(Long id) {
+		return resultRepository.getOne(id);
+	}
+	public void sumResultUser(Long id) {
+		resultRepository.sumResult(id);
+	}
+}  

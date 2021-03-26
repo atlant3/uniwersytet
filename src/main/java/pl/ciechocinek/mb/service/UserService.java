@@ -33,6 +33,9 @@ public class UserService {
 		user.setRole(UserRole.ROLE_USER);
 		userRepository.save(user);
 	}
+	public void saveOnlyUser(User user) {
+		userRepository.save(user);
+	}
 
 	public User findByUserName(String username) {
 		logger.info("Get user {} by email: " + username);
@@ -52,6 +55,9 @@ public class UserService {
 	// Delete user from DataBase by ID
 	public void deleteUser(Long id) {
 		userRepository.deleteById(id);
+	}
+	public User getUserById(Long id) {
+		return userRepository.getOne(id);
 	}
 
 }

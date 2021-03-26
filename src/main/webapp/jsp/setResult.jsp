@@ -16,30 +16,39 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>List of Students</title>
+<title>Set result</title>
+<link type="text/css" href="login.css" rel="stylesheet">
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link type="text/css" href="login.css" rel="stylesheet">
-<style type="text/css">
-.table {
-	background: #fff;
-}
 
-h1, .back a {
-	color: #fff;
-	font-weight: bold;
-}
-</style>
 </head>
 
 <body>
-	<div class="container-fluid">
-		<c:forEach var="subject" items="${subjects}">
-			<h1>${subject.name}</h1>
-		</c:forEach>
+	<div class="login-page">
+		<div class="form conteiner">
+			<form:form method="POST" modelAttribute="formSetResult"
+				class="form-signin">
+				<h2 class="form-signin-heading">Set your result</h2>
+
+				<spring:bind path="amount">
+					<div class="form-group ${status.error ? 'has-error' : ''}">
+						<form:input type="number" path="amount" class="form-control"
+							placeholder="amount" autofocus="true"></form:input>
+						<form:errors path="amount"></form:errors>
+					</div>
+				</spring:bind>
+
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+				<p class="message">
+					<a href="/results">Back</a>
+				</p>
+			</form:form>
+
+
+		</div>
+
+
 	</div>
 
 

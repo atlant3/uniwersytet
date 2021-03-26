@@ -1,6 +1,7 @@
 package pl.ciechocinek.mb.service;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
@@ -43,5 +44,4 @@ public class SubjectService {
 	public List<Subject> subjectsFaculty(Long id) {
 		return subjectRepository.subjectsByFacultet(id);
 	}
-
 }

@@ -20,7 +20,11 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-
+<style>
+.1 {
+	color: red;
+}
+</style>
 </head>
 
 <body>
@@ -29,12 +33,50 @@
 
 	<div class="container form">
 		<h1>Your profile</h1>
-		<img src="data:image/jpg;base64, ${user.encodedImage}" alt="My image"
-			style="width: 60%"> <br>
+		<img width="300px" src="data:image/jpg;base64, ${user.encodedImage}"
+			alt="My image"> <br>
 		<h3>Last Name: ${user.lastName}</h3>
 		<h3>First Name: ${user.firstName}</h3>
 		<h4>Faculty: ${user.faculty.name}</h4>
-		<br> <a href="addPoints?id=${user.faculty.id}">Add</a>
+		<h4>Amount: ${user.amount}</h4>
+		<c:choose>
+			<c:when test="${user.status=='0'}">
+				<h4>Status: Please send results</h4>
+				<br />
+			</c:when>
+			<c:when test="${user.status=='1'}">
+				<h4>Status: Please wait</h4>
+				<br />
+			</c:when>
+			<c:when test="${user.status=='2'}">
+				<h4>Status: OK</h4>
+				<br />
+			</c:when>
+			<c:when test="${user.status=='3'}">
+				<h4>Status: Sorry</h4>
+				<br />
+			</c:when>
+		</c:choose>
+		<c:set var="inputDisplay" value="${user.status}" />
+		<!-- This same as your request attribute -->
+		<c:choose>
+			<c:when test="${inputDisplay == 0}">
+				<br>
+				<a class="btn btn-lg btn-primary btn-block"
+					href="results?id=${user.id}">My results</a>
+				<br>
+				<a class="btn btn-lg btn-primary btn-block"
+					href="sendResults?id=${user.id}">Send My results</a>
+			</c:when>
+			<c:otherwise>
+				<br>
+				<a style="display: none;" class="btn btn-lg btn-primary btn-block"
+					href="results?id=${user.id}">My results</a>
+				<br>
+				<a style="display: none;" class="btn btn-lg btn-primary btn-block"
+					href="sendResults?id=${user.id}">Send My results</a>
+			</c:otherwise>
+		</c:choose>
 
 	</div>
 

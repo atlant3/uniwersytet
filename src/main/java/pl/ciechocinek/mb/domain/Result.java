@@ -24,23 +24,25 @@ public class Result {
 	@ManyToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "result_subject", joinColumns = @JoinColumn(name = "result_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
-	private Set<Subject> subjects = new HashSet<Subject>();
-
-	public Result(Long id, int amount, User user, Set<Subject> subjects) {
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "result_subject", joinColumns = @JoinColumn(name = "result_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
+	@ManyToOne
+	@JoinColumn(name = "subject_id", referencedColumnName = "subject_id")
+	private Subject subject;
+	
+	public Result(Long id, int amount, User user, Subject subject) {
 		super();
 		this.id = id;
 		this.amount = amount;
 		this.user = user;
-		this.subjects = subjects;
+		this.subject = subject;
 	}
 
-	public Result(int amount, User user, Set<Subject> subjects) {
+	public Result(int amount, User user, Subject subject) {
 		super();
 		this.amount = amount;
 		this.user = user;
-		this.subjects = subjects;
+		this.subject = subject;
 	}
 
 	public Result() {
@@ -71,12 +73,14 @@ public class Result {
 		this.user = user;
 	}
 
-	public Set<Subject> getSubjects() {
-		return subjects;
+
+
+	public Subject getSubject() {
+		return subject;
 	}
 
-	public void setSubjects(Set<Subject> subjects) {
-		this.subjects = subjects;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 
 	@Override
@@ -109,7 +113,7 @@ public class Result {
 
 	@Override
 	public String toString() {
-		return "Result [id=" + id + ", amount=" + amount + ", user=" + user + ", subjects=" + subjects + "]";
+		return "Result [id=" + id + ", amount=" + amount + ", user=" + user + ", subjects=" + subject + "]";
 	}
 
 }

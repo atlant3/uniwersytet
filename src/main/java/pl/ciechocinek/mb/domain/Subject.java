@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Subject implements Serializable {
@@ -29,8 +30,11 @@ public class Subject implements Serializable {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "subject_faculty", joinColumns = @JoinColumn(name = "subject_id"), inverseJoinColumns = @JoinColumn(name = "faculty_id"))
 	private Set<Faculty> faculty = new HashSet<Faculty>();
-	@ManyToMany(mappedBy = "subjects")
-	private Set<Result> results = new HashSet<Result>();
+//	@ManyToMany(mappedBy = "subjects")
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL, CascadeType.PERSIST,
+			CascadeType.MERGE }, mappedBy = "subject")
+	@Column(nullable = false)
+	private Set<Result> results;
 
 	public Subject() {
 	}
