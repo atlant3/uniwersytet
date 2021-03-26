@@ -16,7 +16,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>List of Students</title>
+<title>Results by Student</title>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -38,44 +38,30 @@ h1, .back a {
 <body>
 	<div class="container-fluid">
 		<br>
-		<h1 class="text-center">List of Students</h1>
+		<h1 class="text-center">Results by Student</h1>
 		<br> <input class="form-control" id="myInput" type="text"
 			placeholder="Search.."> <br>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Age</th>
-					<th>Faculty</th>
+					<th>Subject name</th>
 					<th>Amount</th>
-					<th>Delete</th>
-					<th>Accept</th>
-					<th>More</th>
 				</tr>
 			</thead>
 			<tbody id="myTable">
-				<c:forEach var="student" items="${students}">
+				<c:forEach var="result" items="${resultsByStudent}">
 					<tr>
-						<td>${student.id}</td>
-						<td>${student.firstName}</td>
-						<td>${student.lastName}</td>
-						<td>${student.age}</td>
-						<td>${student.faculty.name}</td>
-						<td>${student.amount}</td>
-
-						<td><a href="deleteStudent?id=${student.id}">X</a></td>
-						<td><a href="acceptStudent?id=${student.id}">V</a></td>
-						<td><a href="resultsByStudent?id=${student.id}">More</a></td>
-						
+						<td>${result.id}</td>
+						<td>${result.subject.name}</td>
+						<td>${result.amount}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<br>
 		<p class="text-center back">
-			<a class="" href="/admin">BACK</a>
+			<a class="" href="/listStudents">BACK</a>
 		<p>
 	</div>
 	<script>

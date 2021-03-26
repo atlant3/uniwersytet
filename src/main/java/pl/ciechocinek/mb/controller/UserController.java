@@ -108,6 +108,11 @@ public class UserController {
 		return "redirect:/listStudents";
 	}
 
+	@RequestMapping(value = "/resultsByStudent", method = RequestMethod.GET)
+	public ModelAndView getResultByStudent(@RequestParam Long id) {
+		return resultsByStudents(id);
+	}
+
 	public ModelAndView showStudents() {
 		ModelAndView map = new ModelAndView("listStudents");
 		map.addObject("students", userService.findAllStudents());
@@ -117,6 +122,12 @@ public class UserController {
 	public ModelAndView showStudentByUsername(String userName) {
 		ModelAndView map = new ModelAndView("home");
 		map.addObject("user", userService.getByUsername(userName));
+		return map;
+	}
+
+	public ModelAndView resultsByStudents(Long id) {
+		ModelAndView map = new ModelAndView("resultsByStudent");
+		map.addObject("resultsByStudent", resultService.showResultByUserId(id));
 		return map;
 	}
 
