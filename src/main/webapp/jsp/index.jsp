@@ -14,14 +14,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="Maksym Bilozir" content="">
 
 <title>Log in with your account</title>
-<link type="text/css" href="login.css" rel="stylesheet">
+
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-
+<link type="text/css" href="style/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -34,9 +34,10 @@
 				<h2 class="form-heading"></h2>
 
 				<div class="form-group ${error != null ? 'has-error' : ''}">
-					<span>${message}</span> <input name="userName" placeholder="Email" type="text"
-						class="fadeIn second" autofocus="true" /> <input placeholder="Password" name="password"
-						type="password" class="fadeIn third " /> <span>${error}</span> <input
+					<span>${message}</span> <input name="userName" placeholder="Email"
+						type="text" class="fadeIn second" autofocus="true" /> <input
+						placeholder="Password" name="password" type="password"
+						class="fadeIn third " /> <span>${error}</span> <input
 						type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
@@ -66,8 +67,6 @@
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<!-- 
-	<script src="login.js"></script> -->
 
 </body>
 </html>

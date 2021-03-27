@@ -12,33 +12,20 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="Maksym Bilozir" content="">
 
 <title>List of Students</title>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link type="text/css" href="login.css" rel="stylesheet">
-<style type="text/css">
-.table {
-	background: #fff;
-}
-
-h1, .back a {
-	color: #fff;
-	font-weight: bold;
-}
-</style>
+<link type="text/css" href="style/style.css" rel="stylesheet">
 </head>
 
 <body>
 	<div class="container-fluid">
 		<br>
-		<h1 class="text-center">List of Students</h1>
+		<h1 class="text-center white-text">List of Students</h1>
 		<br> <input class="form-control" id="myInput" type="text"
 			placeholder="Search.."> <br>
 		<table class="table table-striped">
@@ -68,7 +55,7 @@ h1, .back a {
 						<td><a href="deleteStudent?id=${student.id}">X</a></td>
 						<td><a href="acceptStudent?id=${student.id}">V</a></td>
 						<td><a href="resultsByStudent?id=${student.id}">More</a></td>
-						
+
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -78,31 +65,6 @@ h1, .back a {
 			<a class="" href="/admin">BACK</a>
 		<p>
 	</div>
-	<script>
-		$(document)
-				.ready(
-						function() {
-							$("#myInput")
-									.on(
-											"keyup",
-											function() {
-												var value = $(this).val()
-														.toLowerCase();
-												$("#myTable tr")
-														.filter(
-																function() {
-																	$(this)
-																			.toggle(
-																					$(
-																							this)
-																							.text()
-																							.toLowerCase()
-																							.indexOf(
-																									value) > -1)
-																});
-											});
-						});
-	</script>
 
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -117,7 +79,8 @@ h1, .back a {
 		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 		crossorigin="anonymous"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/jqueryTable.js"></script>
 
 </body>
 </html>

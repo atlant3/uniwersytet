@@ -12,33 +12,20 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="Maksym Bilozir" content="">
 
 <title>Results by Student</title>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link type="text/css" href="login.css" rel="stylesheet">
-<style type="text/css">
-.table {
-	background: #fff;
-}
-
-h1, .back a {
-	color: #fff;
-	font-weight: bold;
-}
-</style>
+<link type="text/css" href="style/style.css" rel="stylesheet">
 </head>
 
 <body>
 	<div class="container-fluid">
 		<br>
-		<h1 class="text-center">Results by Student</h1>
+		<h1 class="text-center white-text">Results by Student</h1>
 		<br> <input class="form-control" id="myInput" type="text"
 			placeholder="Search.."> <br>
 		<table class="table table-striped">
@@ -64,31 +51,6 @@ h1, .back a {
 			<a class="" href="/listStudents">BACK</a>
 		<p>
 	</div>
-	<script>
-		$(document)
-				.ready(
-						function() {
-							$("#myInput")
-									.on(
-											"keyup",
-											function() {
-												var value = $(this).val()
-														.toLowerCase();
-												$("#myTable tr")
-														.filter(
-																function() {
-																	$(this)
-																			.toggle(
-																					$(
-																							this)
-																							.text()
-																							.toLowerCase()
-																							.indexOf(
-																									value) > -1)
-																});
-											});
-						});
-	</script>
 
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -104,6 +66,9 @@ h1, .back a {
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/jqueryTable.js"></script>
 
 </body>
 </html>

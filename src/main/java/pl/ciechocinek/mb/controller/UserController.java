@@ -3,7 +3,6 @@ package pl.ciechocinek.mb.controller;
 import java.io.IOException;
 import java.security.Principal;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -70,16 +69,15 @@ public class UserController {
 	}
 
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
-	public String login(Model model, String error, String logout, HttpServletRequest request) {
-		System.out.println("Jest");
+	public String login(Model model, String error, String logout) {
+		
 		if (error != null)
 			model.addAttribute("error", "Your username and password is invalid.");
 
 		if (logout != null)
 			model.addAttribute("message", "You have been logged out successfully.");
-		System.out.println("Jest ok");
-		Object name = request.getAttribute("userName");
-		System.out.println(name);
+		
+
 		return "index";
 	}
 

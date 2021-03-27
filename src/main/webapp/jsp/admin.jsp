@@ -3,6 +3,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
@@ -12,27 +14,39 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="Maksym Bilozir" content="">
 
 <title>ADMIN PANEL</title>
-<link type="text/css" href="login.css" rel="stylesheet">
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-
+<link type="text/css" href="style/style.css" rel="stylesheet">
 </head>
 
 <body>
+	<div class="container d-flex h-100">
 
-	<h1>ADMIN PANEL</h1>
-	<ul>
-		<li><a href="/addFaculty">Add a new Faculty</a></li>
-		<li><a href="/addSubject">Add a new Subject</a></li>
-		<li><a href="/listStudents">Show all Students</a></li>
-	</ul>
+		<div class="helloAdmin form">
+			<h3>ADMIN PANEL</h3>
+			<br> <a class="btn btn-lg btn-primary btn-block"
+				href="/addFaculty">Add a new Faculty</a> <br> <a
+				class="btn btn-lg btn-primary btn-block" href="/addSubject">Add
+				a new Subject</a> <br> <a class="btn btn-lg btn-primary btn-block"
+				href="/listStudents">Show all Students</a> <br> <a
+				onclick="document.forms['logoutForm'].submit()"
+				class="btn btn-lg btn-primary btn-block"><span
+				class="white-text">Logout</span></a>
 
+
+			<c:if test="${pageContext.request.userPrincipal.name != null}">
+				<form id="logoutForm" method="POST" action="${contextPath}/logout">
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</form>
+			</c:if>
+		</div>
+	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -46,8 +60,6 @@
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<!-- 
-	<script src="login.js"></script> -->
 
 </body>
 </html>
