@@ -38,7 +38,6 @@
 					<th>Faculty</th>
 					<th>Amount</th>
 					<th>Delete</th>
-					<th>Accept</th>
 					<th>More</th>
 				</tr>
 			</thead>
@@ -52,8 +51,7 @@
 						<td>${student.faculty.name}</td>
 						<td>${student.amount}</td>
 
-						<td><a href="deleteStudent?id=${student.id}">X</a></td>
-						<td><a href="acceptStudent?id=${student.id}">V</a></td>
+						<td><a href="deleteStudent?id=${student.id}">Delete</a></td>
 						<td><a href="resultsByStudent?id=${student.id}">More</a></td>
 
 					</tr>

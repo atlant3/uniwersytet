@@ -35,6 +35,7 @@ public class FacultyService {
 	public List<Faculty> listOfFaculty() {
 		logger.info("Find all faculty");
 		return facultyRepository.findAll();
+		
 	}
 	
 	//find by id

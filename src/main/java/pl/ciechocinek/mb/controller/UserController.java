@@ -2,7 +2,7 @@ package pl.ciechocinek.mb.controller;
 
 import java.io.IOException;
 import java.security.Principal;
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import pl.ciechocinek.mb.domain.User;
+import pl.ciechocinek.mb.domain.Faculty;
 import pl.ciechocinek.mb.domain.Result;
 import pl.ciechocinek.mb.service.FacultyService;
 import pl.ciechocinek.mb.service.ResultService;
@@ -70,13 +71,12 @@ public class UserController {
 
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public String login(Model model, String error, String logout) {
-		
+
 		if (error != null)
 			model.addAttribute("error", "Your username and password is invalid.");
 
 		if (logout != null)
 			model.addAttribute("message", "You have been logged out successfully.");
-		
 
 		return "index";
 	}
@@ -98,12 +98,26 @@ public class UserController {
 		return "redirect:/listStudents";
 	}
 
-	@RequestMapping(value = "/acceptStudent", method = RequestMethod.GET)
-	public String acceptStudent(@RequestParam Long id) {
-		User user = userService.getUserById(id);
-		user.setStatus(2);
-		userService.saveOnlyUser(user);
-		return "redirect:/listStudents";
+//	@RequestMapping(value = "/acceptStudent", method = RequestMethod.GET)
+//	public String acceptStudent(@RequestParam Long id) {
+//		User user = userService.getUserById(id);
+//		user.setStatus(2);
+//		userService.saveOnlyUser(user);
+//		return "redirect:/listStudents";
+//	}
+	@RequestMapping(value = "/acceptStudents", method = RequestMethod.GET)
+	public String acceptStudents() {
+		List<Faculty> faculties = facultyService.listOfFaculty();
+		System.out.println(faculties.size());
+		for (Faculty faculty : faculties) {
+			List<User> students = userService.getStudentsByFacultyId(faculty.getId(), faculty.getLimitAmount());
+			for (User student : students) {
+				student.setStatus(2);
+				userService.saveOnlyUser(student);
+			}
+		}
+		userService.setStatusSorry();
+		return "admin";
 	}
 
 	@RequestMapping(value = "/resultsByStudent", method = RequestMethod.GET)

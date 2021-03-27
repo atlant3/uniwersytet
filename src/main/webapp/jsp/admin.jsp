@@ -34,6 +34,8 @@
 				class="btn btn-lg btn-primary btn-block" href="/addSubject">Add
 				a new Subject</a> <br> <a class="btn btn-lg btn-primary btn-block"
 				href="/listStudents">Show all Students</a> <br> <a
+				class="btn btn-lg btn-primary btn-block" href="/acceptStudents">Accept
+				Students to faculty</a> <br> <a
 				onclick="document.forms['logoutForm'].submit()"
 				class="btn btn-lg btn-primary btn-block"><span
 				class="white-text">Logout</span></a>

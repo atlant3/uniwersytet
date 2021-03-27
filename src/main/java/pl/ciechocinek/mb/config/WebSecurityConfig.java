@@ -37,11 +37,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.access("hasRole('ROLE_ADMIN')").antMatchers("/addFaculty").access("hasRole('ROLE_ADMIN')")
 				.antMatchers("/addSubject").access("hasRole('ROLE_ADMIN')").antMatchers("/listStudents")
 				.access("hasRole('ROLE_ADMIN')").antMatchers("/resultsByStudent").access("hasRole('ROLE_ADMIN')")
-				.antMatchers("/setResult").access("hasRole('ROLE_USER')").anyRequest().permitAll().and()
-				
-				
-				.formLogin().loginPage("/index")
-				.defaultSuccessUrl("/home").usernameParameter("userName").passwordParameter("password").and().logout()
-				.logoutSuccessUrl("/index?logout").and().exceptionHandling().accessDeniedPage("/403").and().csrf();
+				.antMatchers("/acceptStudents").access("hasRole('ROLE_ADMIN')").antMatchers("/setResult")
+				.access("hasRole('ROLE_USER')").anyRequest().permitAll().and()
+
+				.formLogin().loginPage("/index").defaultSuccessUrl("/home").usernameParameter("userName")
+				.passwordParameter("password").and().logout().logoutSuccessUrl("/index?logout").and()
+				.exceptionHandling().accessDeniedPage("/403").and().csrf();
 	}
 }
