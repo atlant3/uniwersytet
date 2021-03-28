@@ -23,27 +23,28 @@ public class FacultyService {
 
 	@Autowired
 	private FacultyRepository facultyRepository;
-	
-	//save Faculty to DataBase
+
+	// save Faculty to DataBase
 	public void save(Faculty faculty) {
-//		logger.info("Add a new faculty to DataBase" + faculty.toString());
+		logger.info("Add a new faculty to DataBase" + faculty.getName());
 		facultyRepository.save(faculty);
 	}
-	
-	
-	//find all faculty
+
+	// find all faculty
 	public List<Faculty> listOfFaculty() {
 		logger.info("Find all faculty");
 		return facultyRepository.findAll();
-		
+
 	}
-	
-	//find by id
+
+	// find by id
 	public Faculty findById(Long id) {
 		logger.info("Find faculty by id" + id);
-		return facultyRepository.getOne(id);	
+		return facultyRepository.getOne(id);
 	}
+
 	public Set<Faculty> setOfFaculty(Faculty faculty) {
+		logger.info("Show faculty" + faculty.getName());
 		return setOfFaculty(faculty);
 	}
 }

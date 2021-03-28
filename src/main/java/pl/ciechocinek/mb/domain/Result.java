@@ -1,17 +1,11 @@
 package pl.ciechocinek.mb.domain;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -29,7 +23,7 @@ public class Result {
 	@ManyToOne
 	@JoinColumn(name = "subject_id", referencedColumnName = "subject_id")
 	private Subject subject;
-	
+
 	public Result(Long id, int amount, User user, Subject subject) {
 		super();
 		this.id = id;
@@ -72,8 +66,6 @@ public class Result {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-
 
 	public Subject getSubject() {
 		return subject;

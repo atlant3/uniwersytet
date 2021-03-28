@@ -19,15 +19,22 @@ public class ResultService {
 	
 	//add resault to DataBase
 	public void save(Result result) {
+		logger.info("Add a new result" + result.getId());
 		resultRepository.save(result);
 	}
+	//get results by User id
 	public List<Result> showResultByUserId(Long id) {
+		logger.info("Show results by User id" + id);
 		return resultRepository.showResultByUserId(id);
 	}
+	//get result by id
 	public Result getResultById(Long id) {
+		logger.info("Show result by id" + id);
 		return resultRepository.getOne(id);
 	}
+	
 	public void sumResultUser(Long id) {
+		logger.info("Sum results by User id" + id);
 		resultRepository.sumResult(id);
 	}
 }  

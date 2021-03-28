@@ -17,12 +17,15 @@ public class SubjectService {
 	@Autowired
 	private SubjectRepository subjectRepository;
 
+	// add a new Subject to DataBase
 	public void save(Subject subject) {
-		logger.info("Add a new subject to DataBase" + subject.getName());
+		logger.info("Add a new subject to DataBase " + subject.getName());
 		subjectRepository.save(subject);
 	}
 
+	// show Subjects by Faculty id
 	public List<Subject> subjectsFaculty(Long id) {
+		logger.info("show Subjects by Faculty id " + id);
 		return subjectRepository.subjectsByFacultet(id);
 	}
 }

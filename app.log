@@ -1,0 +1,30 @@
+2021-03-28 15:34:35.727  INFO maks-X550CC --- [           main] p.c.m.a.App                              : Starting App using Java 15.0.1 on maks-X550CC with PID 7627 (/home/maks/eclipse-workspace/Uniwersytet/target/classes started by maks in /home/maks/eclipse-workspace/Uniwersytet)
+2021-03-28 15:34:35.799  INFO maks-X550CC --- [           main] p.c.m.a.App                              : No active profile set, falling back to default profiles: default
+2021-03-28 15:34:37.888  INFO maks-X550CC --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-28 15:34:38.098  INFO maks-X550CC --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 188 ms. Found 4 JPA repository interfaces.
+2021-03-28 15:34:40.660  INFO maks-X550CC --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2021-03-28 15:34:40.701  INFO maks-X550CC --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2021-03-28 15:34:40.704  INFO maks-X550CC --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2021-03-28 15:34:40.706  INFO maks-X550CC --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-03-28 15:34:41.773  INFO maks-X550CC --- [           main] o.a.j.s.TldScanner                       : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-03-28 15:34:41.802  INFO maks-X550CC --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2021-03-28 15:34:41.803  INFO maks-X550CC --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5667 ms
+2021-03-28 15:34:42.297  INFO maks-X550CC --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-28 15:34:42.413  INFO maks-X550CC --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.4.29.Final
+2021-03-28 15:34:42.732  INFO maks-X550CC --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-28 15:34:42.981  INFO maks-X550CC --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2021-03-28 15:34:44.066  INFO maks-X550CC --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2021-03-28 15:34:44.115  INFO maks-X550CC --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-03-28 15:34:47.154  INFO maks-X550CC --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-28 15:34:47.178  INFO maks-X550CC --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-28 15:34:49.429  INFO maks-X550CC --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@139b3a29, org.springframework.security.web.context.SecurityContextPersistenceFilter@2487b621, org.springframework.security.web.header.HeaderWriterFilter@769a9b7a, org.springframework.security.web.csrf.CsrfFilter@590f806a, org.springframework.security.web.authentication.logout.LogoutFilter@231c521e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@64e247e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@736a8aea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@39acf187, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@62c1259f, org.springframework.security.web.session.SessionManagementFilter@5003c114, org.springframework.security.web.access.ExceptionTranslationFilter@36696821, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@43cf97a8]
+2021-03-28 15:34:49.760  INFO maks-X550CC --- [           main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-28 15:34:50.334  INFO maks-X550CC --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2021-03-28 15:34:50.389  INFO maks-X550CC --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2021-03-28 15:34:50.421  INFO maks-X550CC --- [           main] p.c.m.a.App                              : Started App in 16.864 seconds (JVM running for 22.992)
+2021-03-28 15:35:09.055  INFO maks-X550CC --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-28 15:35:19.904 ERROR maks-X550CC --- [nio-8080-exec-8] p.c.m.s.UserService                      : Get user {} by email: admin
+2021-03-28 15:37:20.288  INFO maks-X550CC --- [extShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-28 15:37:20.295  INFO maks-X550CC --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-28 15:37:20.300  INFO maks-X550CC --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2021-03-28 15:37:20.320  INFO maks-X550CC --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.

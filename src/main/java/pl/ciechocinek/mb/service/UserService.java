@@ -36,11 +36,11 @@ public class UserService {
 //	}
 	// add a new user to DataBase
 	public void save(User user, MultipartFile file) throws IOException {
-		logger.info("Register new user {} : " + user.getUserName());
 		user.setEncodedImage(Base64.getEncoder().encodeToString(file.getBytes()));
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setRole(UserRole.ROLE_USER);
 		userRepository.save(user);
+		logger.info("Register new user {} : " + user.getUserName());
 	}
 
 	// Update user by user
@@ -51,7 +51,7 @@ public class UserService {
 
 	// Get User by userName
 	public User findByUserName(String username) {
-		logger.info("Get user {} by email: " + username);
+		logger.error("Get user {} by email: " + username);
 		return userRepository.findByUserName(username).get();
 	}
 
@@ -79,6 +79,7 @@ public class UserService {
 	}
 
 	public void acceptStudentsToFaculty() {
+		logger.info("acceptStudentsToFaculty");
 		List<Faculty> faculties = facultyService.listOfFaculty();
 		System.out.println(faculties.size());
 		for (Faculty faculty : faculties) {
@@ -91,11 +92,14 @@ public class UserService {
 
 	}
 
+	// Get all Students by Faculty
 	public List<User> getStudentsByFacultyId(Long id, int limitAmount) {
+		logger.info("Get all Students by Faculty");
 		return userRepository.getStudentsByFacultyId(id, limitAmount);
 	}
 
 	public void setStatusSorry() {
+		logger.info("Set status sorry");
 		userRepository.setStatusSorry();
 	}
 
