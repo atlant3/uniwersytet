@@ -22,29 +22,47 @@
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
 <link type="text/css" href="style/style.css" rel="stylesheet">
+
 </head>
 
 <body>
 	<div class="login-page">
 		<div class="form conteiner">
-			<h1>LOGIN FORM</h1>
+			<h1>
+				<spring:message code="login.title" />
+			</h1>
+			<div>
+				<fieldset>
+					<label><spring:message code="login.choose_language" /></label> <select
+						id="locales">
+						<option value="en"><spring:message code='login.english' /></option>
+						<option value="ua"><spring:message code='login.ukrainian' /></option>
+
+					</select>
+				</fieldset>
+			</div>
 			<br>
 			<form accept-charset=utf-8 class="login-form" method="POST"
 				action="${contextPath}/index">
 				<h2 class="form-heading"></h2>
 
 				<div class="form-group ${error != null ? 'has-error' : ''}">
-					<span>${message}</span> <input name="userName" placeholder="Email"
-						type="text" class="fadeIn second" autofocus="true" /> <input
-						placeholder="Password" name="password" type="password"
-						class="fadeIn third " /> <span>${error}</span> <input
-						type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					<span>${message}</span> <input name="userName"
+						placeholder="<spring:message code='login.email'/>" type="text"
+						class="fadeIn second" autofocus="true" /> <input
+						placeholder="<spring:message code='login.password'/>"
+						name="password" type="password" class="fadeIn third " /> <span>${error}</span>
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">
+						<spring:message code='login.signin' />
+					</button>
 				</div>
 
 				<p class="message">
-					Not registered? <a href="/registration">Create an account</a>
+					<a href="/registration"><spring:message
+							code='login.create_account' /></a>
 				</p>
 
 			</form>
@@ -67,6 +85,18 @@
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var selItem = localStorage.getItem("locales");
+			$('#locales').val(selItem ? selItem : 'en');
+			$("#locales").change(function() {
+				var selectedOption = $('#locales').val();
+				if (selectedOption) {
+					window.location.replace('?lang=' + selectedOption);
+					localStorage.setItem("locales", selectedOption);
+				}
+			});
+		});
+	</script>
 </body>
 </html>

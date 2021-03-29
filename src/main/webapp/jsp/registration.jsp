@@ -28,7 +28,7 @@
 		<div class="form conteiner">
 			<form:form method="POST" modelAttribute="userForm"
 				class="form-signin" enctype="multipart/form-data">
-				<h2 class="form-signin-heading">Create your account</h2>
+				<h2 class="form-signin-heading"><spring:message code='registration.title' /></h2>
 
 				<spring:bind path="firstName">
 					<div class="form-group ${status.error ? 'has-error' : ''}">
@@ -57,7 +57,7 @@
 				<spring:bind path="age">
 					<div class="form-group ${status.error ? 'has-error' : ''}">
 						<form:input type="text" path="age" class="form-control"
-							placeholder="Your age" value="Age" autofocus="true"></form:input>
+							placeholder="Age" value="Age" autofocus="true"></form:input>
 						<form:errors path="age"></form:errors>
 					</div>
 				</spring:bind>
@@ -81,9 +81,9 @@
 				</spring:bind>
 				<input type="file" name="imgFile" />
 			
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+				<button class="btn btn-lg btn-primary btn-block" type="submit"><spring:message code='registration.submit' /></button>
 				<p class="message">
-					Already registered? <a href="/login">Sign In</a>
+					<spring:message code='registration.alreadeSingUp' /><a href="/login"><spring:message code='registration.singIn' /></a>
 				</p>
 			</form:form>
 

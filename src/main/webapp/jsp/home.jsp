@@ -36,35 +36,35 @@
 	</security:authorize>
 	<security:authorize access="hasRole('ROLE_USER')">
 		<div class="container profile">
-			<h1>Your profile</h1>
+			<h1><spring:message code='user.yourProfile' /></h1>
 			<img width="300px" src="data:image/jpg;base64, ${user.encodedImage}"
 				alt="My image"> <br>
-			<h3>Last Name: ${user.lastName}</h3>
-			<h3>First Name: ${user.firstName}</h3>
-			<h4>Faculty: ${user.faculty.name}</h4>
-			<h4>Result: ${user.amount}</h4>
+			<h3><spring:message code='registration.lastName' />: ${user.lastName}</h3>
+			<h3><spring:message code='registration.firsName' />: ${user.firstName}</h3>
+			<h4><spring:message code='user.faculty' />: ${user.faculty.name}</h4>
+			<h4><spring:message code='user.result' />: ${user.amount}</h4>
 			<c:choose>
 				<c:when test="${user.status=='0'}">
 					<h4>
-						Status: <span>Please send results</span>
+						Status: <span><spring:message code='user.status0' /></span>
 					</h4>
 					<br />
 				</c:when>
 				<c:when test="${user.status=='1'}">
 					<h4>
-						Status: <span>Please wait</span>
+						Status: <span><spring:message code='user.status1' /></span>
 					</h4>
 					<br />
 				</c:when>
 				<c:when test="${user.status=='2'}">
 					<h4>
-						Status: <span>OK</span>
+						Status: <span><spring:message code='user.status2' /></span>
 					</h4>
 					<br />
 				</c:when>
 				<c:when test="${user.status=='3'}">
 					<h4>
-						Status: <span>Sorry</span>
+						Status: <span><spring:message code='user.status3' /></span>
 					</h4>
 					<br />
 				</c:when>
@@ -75,23 +75,23 @@
 				<c:when test="${inputDisplay == 0}">
 					<br>
 					<a class="btn btn-lg btn-primary btn-block"
-						href="results?id=${user.id}">My results</a>
+						href="results?id=${user.id}"><spring:message code='user.myResults' /></a>
 					<br>
 					<a class="btn btn-lg btn-primary btn-block"
-						href="sendResults?id=${user.id}">Send My results</a>
+						href="sendResults?id=${user.id}"><spring:message code='user.sendMyResults' /></a>
 				</c:when>
 				<c:otherwise>
 					<br>
 					<a style="display: none;" class="btn btn-lg btn-primary btn-block"
-						href="results?id=${user.id}">My results</a>
+						href="results?id=${user.id}"><spring:message code='user.myResults' /></a>
 					<br>
 					<a style="display: none;" class="btn btn-lg btn-primary btn-block"
-						href="sendResults?id=${user.id}">Send My results</a>
+						href="sendResults?id=${user.id}"><spring:message code='user.sendMyResults' /></a>
 				</c:otherwise>
 			</c:choose>
 			<br> <a onclick="document.forms['logoutForm'].submit()"
 				class="btn btn-lg btn-primary btn-block"><span
-				class="white-text">Logout</span></a>
+				class="white-text"><spring:message code='user.logout' /></span></a>
 
 
 			<c:if test="${pageContext.request.userPrincipal.name != null}">

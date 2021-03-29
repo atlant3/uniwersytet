@@ -25,16 +25,16 @@
 <body>
 	<div class="container-fluid">
 		<br>
-		<h1 class="text-center white-text">Results</h1>
+		<h1 class="text-center white-text"><spring:message code='results.title' /></h1>
 		<br> <input class="form-control" id="myInput" type="text"
-			placeholder="Search.."> <br>
+			placeholder="<spring:message code='results.search' />"> <br>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>Subject</th>
-					<th>Amount</th>
-					<th>Edit</th>
+					<th><spring:message code='results.subject' /></th>
+					<th><spring:message code='results.amount' /></th>
+					<th><spring:message code='results.edit' /></th>
 				</tr>
 			</thead>
 			<tbody id="myTable">
@@ -44,14 +44,14 @@
 						<td>${result.subject.name}</td>
 						<td>${result.amount}</td>
 
-						<td><a id="myForm" href="setResult?id=${result.id}">Edit</a></td>
+						<td><a id="myForm" href="setResult?id=${result.id}"><spring:message code='results.edit' /></a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<br>
 		<p class="text-center back">
-			<a href="/home">BACK</a>
+			<a href="/home"><spring:message code='results.back' /></a>
 		<p>
 	</div>
 
