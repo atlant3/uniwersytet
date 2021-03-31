@@ -1,33 +1,27 @@
 package pl.ciechocinek.mb.controller;
 
 import java.security.Principal;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import pl.ciechocinek.mb.domain.Faculty;
+
 import pl.ciechocinek.mb.domain.Result;
-import pl.ciechocinek.mb.domain.Subject;
 import pl.ciechocinek.mb.domain.User;
-import pl.ciechocinek.mb.domain.UserRole;
 import pl.ciechocinek.mb.service.ResultService;
-import pl.ciechocinek.mb.service.SubjectService;
 import pl.ciechocinek.mb.service.UserService;
 
 @Controller
 public class ResultController {
 
-	@Autowired
-	private SubjectService subjectService;
 	@Autowired
 	private ResultService resultService;
 	Long resultId;

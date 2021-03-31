@@ -1,9 +1,5 @@
 package pl.ciechocinek.mb.controller;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,14 +8,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import pl.ciechocinek.mb.domain.Faculty;
 import pl.ciechocinek.mb.domain.Subject;
 import pl.ciechocinek.mb.service.FacultyService;
 import pl.ciechocinek.mb.service.SubjectService;
 
 @Controller
 public class SubjectController {
-	
+
 	@Autowired
 	private FacultyService facultyService;
 	@Autowired
@@ -40,16 +35,10 @@ public class SubjectController {
 		if (bindingResult.hasErrors()) {
 			return "addSubject";
 		}
-//		Faculty f1 = (Faculty) model.getAttribute("faculty");
-//		System.out.println(formAddSubject.toString());
-//		int i = formAddSubject.getFaculty().
-//		
-////		formAddSubject.setFaculty(null);
-////		System.out.println(formAddSubject.toString() + f1);
+
 		subjectService.save(formAddSubject);
 
 		return "redirect:/admin";
 	}
 
 }
-
